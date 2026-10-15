@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% block title %}Health Survey | Nutrition Deficiency Analysis{% endblock %}
+{% block content %}
+<div class="page-heading"><span class="eyebrow">COMMUNITY SURVEY</span><h1>Nutrition & Health Survey</h1><p>Answer the questions honestly. Your responses are used to calculate a basic educational risk score.</p></div>
+<form method="post" class="survey-form">
+ <div class="form-section"><h2>01 · Basic information</h2><div class="form-grid">
+ <label>Full name<input name="name" required value="{{ form.get('name','') }}" placeholder="Enter name"></label>
+ <label>Age<input type="number" name="age" min="1" max="120" required value="{{ form.get('age','') }}" placeholder="Age"></label>
+ <label>Gender<select name="gender" required><option value="">Select</option>{% for x in ['Male','Female','Other'] %}<option {% if form.get('gender')==x %}selected{% endif %}>{{ x }}</option>{% endfor %}</select></label>
+ <label>Occupation<select name="occupation" required><option value="">Select</option>{% for x in ['Student','Employee','Self-employed','Homemaker','Other'] %}<option {% if form.get('occupation')==x %}selected{% endif %}>{{ x }}</option>{% endfor %}</select></label>
+ </div></div>
+ <div class="form-section"><h2>02 · Food habits</h2><div class="form-grid">
+ <label>How often do you eat fruits?<select name="fruit_intake" required>{% for x in ['Daily','3-4 times/week','Rarely','Never'] %}<option {% if form.get('fruit_intake')==x %}selected{% endif %}>{{ x }}</option>{% endfor %}</select></label>
+ <label>Green leafy vegetables<select name="vegetables" required>{% for x in ['Daily','3-4 times/week','Rarely','Never'] %}<option {% if form.get('vegetables')==x %}selected{% endif %}>{{ x }}</option>{% endfor %}</select></label>
+ <label>Protein foods (eggs, pulses, fish, meat)<select name="protein_food" required>{% for x in ['Daily','Sometimes','Rarely'] %}<option {% if form.get('protein_food')==x %}selected{% endif %}>{{ x }}</option>{% endfor %}</select></label>
+ <label>Packaged / junk food<select name="junk_food" required>{% for x in ['Rarely','Sometimes','Daily'] %}<option {% if form.get('junk_food')==x %}selected{% endif %}>{{ x }}</option>{% endfor %}</select></label>
+ </div></div>
+ <div class="form-section"><h2>03 · General wellness</h2><div class="form-grid">
+ <label>Do you often feel tired or weak?<select name="weakness" required>{% for x in ['No','Yes'] %}<option {% if form.get('weakness')==x %}selected{% endif %}>{{ x }}</option>{% endfor %}</select></label>
+ <label>Hair fall, pale skin or weak nails?<select name="symptoms" required>{% for x in ['No','Yes'] %}<option {% if form.get('symptoms')==x %}selected{% endif %}>{{ x }}</option>{% endfor %}</select></label>
+ <label>Do you take iron/vitamin/mineral supplements?<select name="supplements" required>{% for x in ['Yes','No'] %}<option {% if form.get('supplements')==x %}selected{% endif %}>{{ x }}</option>{% endfor %}</select></label>
+ <label>Do you skip meals?<select name="skip_meals" required>{% for x in ['No','Yes'] %}<option {% if form.get('skip_meals')==x %}selected{% endif %}>{{ x }}</option>{% endfor %}</select></label>
+ <label>Are you aware of nutrition deficiencies?<select name="nutrition_awareness" required>{% for x in ['Yes','No'] %}<option {% if form.get('nutrition_awareness')==x %}selected{% endif %}>{{ x }}</option>{% endfor %}</select></label>
+ </div></div>
+ <button class="btn primary" type="submit">Submit Survey →</button>
+</form>
+{% endblock %}

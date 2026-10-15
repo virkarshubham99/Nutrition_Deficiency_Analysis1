@@ -1,0 +1,22 @@
+{% extends "base.html" %}{% block title %}Home | Nutrition Deficiency Analysis{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy"><span class="eyebrow">COMMUNITY HEALTH • DATA ANALYTICS</span>
+  <h1>Understand nutrition.<br><em>Support healthier communities.</em></h1>
+  <p>A simple survey-based website to explore food habits, possible nutrition risk patterns, and community-level trends.</p>
+  <div class="actions"><a class="btn primary" href="{{ url_for('survey') }}">Start Survey →</a><a class="btn light" href="{{ url_for('risk') }}">View Risk Guide</a></div></div>
+  <div class="hero-art"><div class="circle">🥑</div><div class="float f1">🥕</div><div class="float f2">🍎</div><div class="float f3">🥦</div><div class="art-label">Small habits. Better health.</div></div>
+</section>
+<section class="stats">
+ <div class="stat"><span>Survey records</span><strong>{{ total }}</strong><small>Includes demo sample data</small></div>
+ <div class="stat"><span>High screening risk</span><strong>{{ high }}</strong><small>Rule-based demo result</small></div>
+ <div class="stat"><span>Project focus</span><strong>Local</strong><small>Survey-driven insights</small></div>
+</section>
+<h2 class="section-title">Explore the platform</h2>
+<div class="feature-grid">
+ <a class="feature" href="{{ url_for('survey') }}"><div class="feature-icon">📝</div><h3>Health Survey</h3><p>Enter food habits and general wellness responses.</p><span>Fill survey →</span></a>
+ <a class="feature" href="{{ url_for('risk') }}"><div class="feature-icon">🧭</div><h3>Risk Analysis</h3><p>Understand how the demo screening score works.</p><span>Learn more →</span></a>
+ <a class="feature" href="{{ url_for('login') }}"><div class="feature-icon">📊</div><h3>Analytics Dashboard</h3><p>View bar graphs, pie charts, age groups and summaries.</p><span>Login to view →</span></a>
+</div>
+<div class="notice"><strong>Important:</strong> This project gives educational screening estimates only. It does not diagnose iron, vitamin, or any other deficiency. Consult a qualified healthcare professional for medical advice.</div>
+{% endblock %}

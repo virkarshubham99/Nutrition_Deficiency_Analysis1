@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}Risk Analysis | Nutrition Deficiency Analysis{% endblock %}
+{% block content %}
+<div class="page-heading"><span class="eyebrow">HOW IT WORKS</span><h1>Risk Analysis Guide</h1><p>A transparent, rule-based score for learning and project demonstration.</p></div>
+<div class="risk-cards">
+ <div class="risk-card low"><span class="dot"></span><h2>Low risk</h2><p>Score 0–4</p><small>Fewer risk indicators were selected in the survey.</small></div>
+ <div class="risk-card medium"><span class="dot"></span><h2>Medium risk</h2><p>Score 5–8</p><small>Some food-habit or wellness indicators were selected.</small></div>
+ <div class="risk-card high"><span class="dot"></span><h2>High risk</h2><p>Score 9 or more</p><small>Several risk indicators were selected; consider seeking professional advice.</small></div>
+</div>
+<div class="content-card"><h2>Factors included in the demo score</h2><ul class="check-list"><li>Low fruit intake</li><li>Low green leafy vegetable intake</li><li>Low intake of protein foods</li><li>Frequent packaged or junk food</li><li>Frequent tiredness or weakness</li><li>Reported hair fall, pale skin or weak nails</li><li>Skipping meals and not taking supplements</li></ul></div>
+<div class="notice"><strong>Health warning:</strong> These questions cannot confirm a nutritional deficiency. Symptoms can have many causes, and supplements should not be started only from this score. A healthcare professional may recommend examination and appropriate tests.</div>
+{% endblock %}

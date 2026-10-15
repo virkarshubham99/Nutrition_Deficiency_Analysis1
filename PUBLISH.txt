@@ -1,0 +1,57 @@
+PUBLISH THIS FLASK WEBSITE (RENDER)
+
+This guide uses Render as the hosting provider. It assumes the project is in a
+GitHub repository. The current app is a demo; do not publish real or private
+health information with this setup.
+
+1. Prepare the project
+
+   - Put app.py, requirements.txt, templates/, and static/ in a GitHub repository.
+   - Do not upload nutrition.db if it contains any real or private data. A new
+     empty database is created automatically when the app starts, with
+     fictional demo records.
+   - Before making the app public, change the default demo login credentials
+     (admin/admin123 and user/user123) in app.py. The app currently has no
+     password-change page.
+
+2. Create the Render service
+
+   - Sign in at https://render.com and choose New -> Web Service.
+   - Connect the GitHub repository containing this project.
+   - Select the Python runtime.
+   - Set Build Command to:
+
+       pip install -r requirements.txt gunicorn
+
+   - Set Start Command to:
+
+       gunicorn app:app --bind 0.0.0.0:$PORT
+
+3. Set the service environment variable
+
+   In the Render service's Environment settings, add:
+
+       SECRET_KEY=<a long, random, private value>
+
+   Generate a new value for the deployment and do not commit it to the
+   repository. Redeploy after saving the setting.
+
+4. Publish and open the site
+
+   - Choose Create Web Service. Render builds and starts the app.
+   - When deployment succeeds, open the .onrender.com URL shown on the
+     service's page.
+   - Check the home page, submit a test survey, and verify login and dashboard
+     access.
+
+IMPORTANT LIMITATIONS
+
+- This app stores data in a local SQLite file (nutrition.db). A standard
+  hosted service may use an ephemeral filesystem, so uploaded surveys and
+  other database changes can be lost when the service is redeployed or
+  restarted. Do not rely on this setup for durable or production data.
+- Persistent SQLite storage requires configuring a persistent disk and
+  changing the app's database path to use its mount directory. For a
+  production service, use a managed database and add appropriate privacy,
+  access-control, backup, and security measures.
+- The risk score is an educational demonstration, not a medical diagnosis.

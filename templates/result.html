@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}Survey Result | Nutrition Deficiency Analysis{% endblock %}
+{% block content %}<div class="result-card">
+<div class="result-symbol">✓</div><span class="eyebrow">SURVEY SUBMITTED</span><h1>Thank you, {{ result.name }}!</h1>
+<p>Your responses have been saved. The demo screening category is:</p>
+<div class="risk-pill {{ result.risk_level|lower }}">{{ result.risk_level }} screening risk</div>
+<p class="muted">This is a simple educational score based on reported habits and symptoms, not a medical diagnosis or a confirmed nutrient deficiency.</p>
+<div class="actions center"><a class="btn primary" href="{{ url_for('survey') }}">Submit another response</a><a class="btn light" href="{{ url_for('risk') }}">Understand the score</a></div>
+</div>{% endblock %}
